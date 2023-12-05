@@ -194,6 +194,12 @@ footer .logo ul li{
 footer .links ul{
     list-style: none;
 }
+
+footer .links ul li{
+    width: 320px;
+    display: flex;
+    justify-content: space-between;
+}
 .copyright{
     position: absolute;
     width: 100%;

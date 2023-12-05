@@ -52,12 +52,33 @@
     
     <div class="form">
         <h3>Login</h3>
-        <form action="">
-            <input type="text" name="" id="" placeholder="Username">
-            <input type="password" name="" id="" placeholder="Password">
+        <form id="loginForm" action="" onsubmit="return validateForm()">
+            <input type="text" name="username" id="username" placeholder="Username">
+            <input type="password" name="password" id="password" placeholder="Password">
+            <span id="setError" class="error"></span>
+            <br>
             <button type="submit">Login</button>
         </form>
     </div>
+    
+    <script>
+        function validateForm() {
+            document.getElementById('setError').textContent = '';
+    
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+    
+            if (username.trim() === '') {
+                document.getElementById('setError').textContent = 'Username is required';
+                return false;
+            }
+            if (password.trim() === '') {
+                document.getElementById('setError').textContent = 'Password is required';
+                return false;
+            }
+            return true;
+        }
+    </script>
 
 
 

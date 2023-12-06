@@ -7,7 +7,7 @@
 }
 
 body{
-    background: #fef9f3;
+    background: rgba(246, 230, 213, 0.951);
 }
 a{
     text-decoration: none;
@@ -24,9 +24,9 @@ a{
     height: 100px;
     padding: 40px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    background-color: #fff;
-}
+    background-color: rgba(246, 242, 237, 0.881);
 .logo image{
+}
     object-fit: cover;
 }
 .search_bar {

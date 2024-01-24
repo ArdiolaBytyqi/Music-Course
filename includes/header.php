@@ -62,4 +62,92 @@
         <?php
             }
         ?>
+
+        <div class="links burger_menu">
+            <a href="javascript:void(0);" onclick="toggleBurger()">
+                <i class="fa-solid fa-bars"></i>
+            </a>
+        </div>
     </div>
+
+    <div class="burger_content">
+    <div class="burger_link">
+      <ul>
+        <li>
+          <a href="index.php">Home</a>
+        </li>
+        <li>
+          <a href="about-us.php">About us</a>
+        </li>
+        <li>
+          <a href="contact-us.php">Contact us</a>
+        </li>
+      </ul>
+    </div>
+
+    <?php
+    if (isset($_SESSION['user_id'])) {
+
+    ?>
+      <div class="burger_login">
+        <ul>
+          <li>
+            <a href="login.php"><i class="fa-solid fa-user"></i> <?php echo $_SESSION['username']; ?></a>
+          </li>
+          <li>
+            <a href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+          </li>
+        </ul>
+      </div>
+    <?php
+    } else {
+    ?>
+
+      <div class="burger_login">
+        <ul>
+          <li>
+            <a href="login.php"><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a>
+          </li>
+          <li>
+            <a href="register.php"><i class="fa-solid fa-user-plus"></i> Register</a>
+          </li>
+        </ul>
+      </div>
+    <?php
+    }
+    ?>
+
+  </div>
+
+  <script>
+    function toggleBurger() {
+      var burgerContent = document.querySelector('.burger_content');
+      if (burgerContent.style.right === '0px') {
+        burgerContent.style.right = '-300px';
+
+        burgerContent.addEventListener('transitionend', function onTransitionEnd() {
+          burgerContent.style.display = 'none';
+          burgerContent.removeEventListener('transitionend', onTransitionEnd);
+        });
+      } else {
+        burgerContent.style.display = 'block';
+        burgerContent.style.right = '0px';
+      }
+    }
+
+    document.addEventListener('click', function(event) {
+      var burgerContent = document.querySelector('.burger_content');
+      var burgerButton = document.querySelector('.burger');
+
+      if (!burgerContent.contains(event.target) && !burgerButton.contains(event.target)) {
+        if (burgerContent.style.right === '0px') {
+          burgerContent.style.right = '-300px';
+
+          burgerContent.addEventListener('transitionend', function onTransitionEnd() {
+            burgerContent.style.display = 'none';
+            burgerContent.removeEventListener('transitionend', onTransitionEnd);
+          });
+        }
+      }
+    });
+  </script>

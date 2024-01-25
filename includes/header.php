@@ -71,6 +71,9 @@
     </div>
 
     <div class="burger_content">
+    <div class="burger_close_btn" onclick="toggleBurger()">
+    <span>X</span>
+  </div>
     <div class="burger_link">
       <ul>
         <li>
@@ -118,10 +121,27 @@
     ?>
 
   </div>
-
   <script>
-    function toggleBurger() {
-      var burgerContent = document.querySelector('.burger_content');
+  function toggleBurger() {
+    var burgerContent = document.querySelector('.burger_content');
+    if (burgerContent.style.right === '0px') {
+      burgerContent.style.right = '-300px';
+
+      burgerContent.addEventListener('transitionend', function onTransitionEnd() {
+        burgerContent.style.display = 'none';
+        burgerContent.removeEventListener('transitionend', onTransitionEnd);
+      });
+    } else {
+      burgerContent.style.display = 'block';
+      burgerContent.style.right = '0px';
+    }
+  }
+
+  document.addEventListener('click', function(event) {
+    var burgerContent = document.querySelector('.burger_content');
+    var burgerButton = document.querySelector('.burger');
+
+    if (!burgerContent.contains(event.target) && !burgerButton.contains(event.target)) {
       if (burgerContent.style.right === '0px') {
         burgerContent.style.right = '-300px';
 
@@ -129,25 +149,7 @@
           burgerContent.style.display = 'none';
           burgerContent.removeEventListener('transitionend', onTransitionEnd);
         });
-      } else {
-        burgerContent.style.display = 'block';
-        burgerContent.style.right = '0px';
       }
     }
-
-    document.addEventListener('click', function(event) {
-      var burgerContent = document.querySelector('.burger_content');
-      var burgerButton = document.querySelector('.burger');
-
-      if (!burgerContent.contains(event.target) && !burgerButton.contains(event.target)) {
-        if (burgerContent.style.right === '0px') {
-          burgerContent.style.right = '-300px';
-
-          burgerContent.addEventListener('transitionend', function onTransitionEnd() {
-            burgerContent.style.display = 'none';
-            burgerContent.removeEventListener('transitionend', onTransitionEnd);
-          });
-        }
-      }
-    });
-  </script>
+  });
+</script>

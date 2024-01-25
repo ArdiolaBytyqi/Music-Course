@@ -23,7 +23,7 @@ class Users
             }
         } else {
             $encrypted_password = md5($password);
-            $sql = "SELECT id, username FROM users WHERE (username = '$username' OR email = '$username') AND password = '$encrypted_password'";
+            $sql = "SELECT id, username, roles FROM users WHERE (username = '$username' OR email = '$username') AND password = '$encrypted_password'";
             $result = $this->conn->query($sql);
 
             if ($result) {
@@ -31,9 +31,15 @@ class Users
                     $row = $result->fetch_assoc();
                     $_SESSION['user_id'] = $row['id'];
                     $_SESSION['username'] = $row['username'];
+                    $_SESSION['roles'] = $row['roles'];
 
-                    header("Location: index.php");
-                    exit();
+                    if($row['roles'] == 2){
+                        echo '<script>window.location.href = "admin/";</script>';
+                        exit();
+                    } else {
+                        echo '<script>window.location.href = "index.php";</script>';
+                        exit();
+                    }
                 } else {
                     echo '<script> alert("Invalid username or password!")</script>';
                 }
@@ -66,7 +72,7 @@ class Users
                 $sql = "INSERT INTO users (`username`, `email`, `password`, `roles`) VALUES ('$username', '$email', '$encrypted_password', '1')";
                 $result = $this->conn->query($sql);
                 if ($result) {
-                    header("Location: login.php");
+                    echo '<script>window.location.href = "login.php";</script>';
                     exit();
                 } else {
                     echo '<script> alert("Error while registering, please try again!")</script>';

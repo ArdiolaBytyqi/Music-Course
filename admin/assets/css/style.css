@@ -28,6 +28,9 @@ p{
     width: 300px;
     height: 100vh;
 }
+.burger-menu{
+  display: none;
+}
 .content{
     margin-top: 60px;
     padding: 50px;
@@ -38,6 +41,7 @@ p{
     width: 300px;
     height: 100vh;
     background: rgba(237, 190, 166, 0.951);
+    z-index: 999;
 }
 .sidebar .logo{
     width: 100%;
@@ -95,8 +99,8 @@ table {
   }
 
   th {
-    background-color: #343a40;
-    color: #fff;
+    background-color: rgba(237, 190, 166, 0.951);
+    color: #371D10;
   }
 
   tbody tr:nth-child(even) {
@@ -106,3 +110,85 @@ table {
   tbody tr:hover {
     background-color: #e0e0e0;
   }
+  .input_container{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+  }
+  .input_container input, select {
+    width: 500px;
+    height: 50px;
+    margin: 10px;
+    padding: 5px;
+    font-size: 2.5vh;
+    border: 2px solid black;
+    border-radius: 10px;
+  }
+
+  .input_container textarea{
+    width: 500px;
+    margin: 10px;
+    padding: 5px;
+    font-size: 2.5vh;
+    border: 2px solid black;
+    border-radius: 10px;
+  }
+  .btn_submit{
+    padding: 8px 15px;
+    font-size: 2.5vh;
+    background-color: rgba(237, 190, 166, 0.951);
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    position: absolute;
+    right: 50px;
+  }
+
+  /*Phone*/
+@media only screen and (max-width: 600px) {
+  .sidebar{
+    transition: 0.5s;
+    left: -300px;
+  }
+  .sidebar.active {
+    left: 0;
+}
+.sidebar_block{
+  width: 0;
+  height: 0;
+}
+.content{
+  width: 100%;
+}
+.navbar .nav{
+  width: 100%;
+}
+
+.burger-menu{
+  display: block;
+}
+}
+
+/*Tablet*/
+@media only screen and (min-width: 601px) and (max-width: 1200px) {
+  .sidebar{
+    transition: 0.5s;
+    left: -300px;
+  }
+  .sidebar.active {
+    left: 0;
+}
+.sidebar_block{
+  width: 0;
+  height: 0;
+}
+.content{
+  width: 100%;
+}
+.navbar .nav{
+  width: 100%;
+}
+.burger-menu{
+  display: block;
+}
+}

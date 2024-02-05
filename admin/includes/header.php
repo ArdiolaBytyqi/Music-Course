@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['roles']) || $_SESSION['roles'] != 2) {
+if (!isset($_SESSION['user_id']) || $_SESSION['roles'] != 2) {
     echo "<script>window.location.href = '../index.php';</script>";
     exit();
 } else
@@ -24,7 +24,9 @@ if (!isset($_SESSION['roles']) || $_SESSION['roles'] != 2) {
 <body>
     <div class="sidebar">
         <div class="logo">
+            <a href="../">
             <img src="../assets/images/llogo1.png" alt="">
+            </a>
         </div>
         <ul>
             <li>

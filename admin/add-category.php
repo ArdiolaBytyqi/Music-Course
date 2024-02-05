@@ -3,7 +3,6 @@
 
     require_once '../classes/Produktet.php';
 
-    $data = new Produktet();
     if(isset($_POST['submit'])){
         $name = $_POST['name'];
         $content = $_POST['content'];

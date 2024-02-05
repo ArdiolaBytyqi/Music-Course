@@ -82,7 +82,7 @@ class Produktet
             $target_file = $target_dir . basename($image['name']);
             $save_file = "assets/images/instrumentet/" . basename($image['name']);
             
-            if ($this->moveUploadedFile($image['tmp_name'], $target_file)) {
+            if (move_uploaded_file($image['tmp_name'], $target_file)) {
                 $query = "INSERT INTO categories (image, name, content) VALUES ('$save_file', '$name', '$content');";
             } else {
                 return false;
@@ -111,7 +111,7 @@ class Produktet
 
     
     private function moveUploadedFile($tmpFilePath, $targetFilePath) {
-        // Move the uploaded file
+
         return move_uploaded_file($tmpFilePath, $targetFilePath);
     }
     

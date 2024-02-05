@@ -4,7 +4,7 @@
         require_once 'classes/Users.php';
         if(isset($_POST['submit'])){
             $username = $_POST['username'];
-            $password = $_POST['password'];
+            $password = $_POST['password'];  //
 
             $login = new Users();
             $login->login($username, $password);

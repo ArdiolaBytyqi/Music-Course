@@ -1,5 +1,29 @@
 <?php
         require_once 'includes/header.php';
+
+        require_once 'classes/Contact.php';
+        if(isset($_POST['submit'])){
+            $name = $_POST['name'];
+            $surname = $_POST['surname'];
+            $email = $_POST['email'];
+            $description = $_POST['description'];
+
+            if(empty($email) || empty($description)){
+                echo '<script> alert("Email and Description are required")</script>';
+                echo '<script>window.location.href = "contact-us.php";</script>';
+            } else{
+                $data = new Contact();
+                $contact = $data->setComments($name, $surname, $email, $description);
+
+                if($contact){
+                    echo '<script>window.location.href = "index.php";</script>';
+                    exit();
+                } else {
+                    echo 'Something went wrong!';
+                }
+
+            }
+        }
     ?>
 
 
@@ -9,14 +33,14 @@
             <p>Ju inkurajojmë të na kontaktoni për çdo pyetje, koment, ose nevojë për ndihmë. Për të bërë këtë, mund të përdorni formularin e kontaktit më poshtë ose të na gjeni në adresën dhe numrin e telefonit të dhënë më poshtë. Jemi këtu për t'ju ndihmuar dhe do të përpilojmë përgjigje sa më shpejt të jetë e mundur.</p>
         </div>
         <div class="contact_form">
-            <form action="">
+            <form action="" method="post">
                 <div class="make_row">
-                    <input type="tel" name="" id="" placeholder="Name">
-                    <input type="tel" name="" id="" placeholder="Last Name">
+                    <input type="text" name="name" id="" placeholder="Name">
+                    <input type="text" name="surname" id="" placeholder="Last Name">
                 </div>
-                <input type="email" name="" id="" placeholder="Email">
-                <textarea name="" id="" rows="4" placeholder="Description..."></textarea>
-                <button type="submit">Submit</button>
+                <input type="email" name="email" id="" placeholder="Email">
+                <textarea name="description" id="" rows="4" placeholder="Description..."></textarea>
+                <button type="submit" name='submit'>Submit</button>
             </form>
         </div>
     </div>

@@ -13,11 +13,11 @@
         </div>
         <div class="links">
             <ul>
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.php">Home</a></li>
 
-                <li><a href="about-us.html">About Us</a></li>
+                <li><a href="about-us.php">About Us</a></li>
 
-                <li><a href="contact-us.html">Contact Us</a></li>
+                <li><a href="contact-us.php">Contact Us</a></li>
             </ul>
         </div>
 

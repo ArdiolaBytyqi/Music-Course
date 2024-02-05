@@ -24,7 +24,7 @@
             foreach ($teachers as $teacher) {
                 ?>
                 <div class="box">
-                    <a href="category-details.php?id=<?php echo $teacher['id'];?>">
+                    <a href="#">
                         <img src="<?php echo $teacher['image']; ?>" alt="">
                         <h3><?php echo $teacher['name'] . ' ' . $teacher['surname']; ?></h3>
                         <h4><?php echo $teacher['email']; ?></h3>
